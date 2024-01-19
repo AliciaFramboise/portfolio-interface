@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+h1 {
+  font-family: Century Gothic;
+}
+
+button {
+  border-radius: 1em;
+  padding: 1em;
+  border: none;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 1em;
+  font-weight: bold;
+  color: white;
+  background-color: #baa079;
+  width: 20em;
+}
+
+button:hover {
+  background-color: #977e59;
+}
+
+input {
+  border-radius: 1em;
+  padding: 1em;
+  border: none
+}

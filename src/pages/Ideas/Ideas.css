@@ -1,0 +1,41 @@
+.ideas-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    p {
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: bold;
+        font-size: 2em;
+        color: rgb(199, 195, 183);
+    }
+
+    .tool-container {
+        display: flex;
+        justify-content: center;
+        padding: 2em;
+    
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            row-gap: 2em;
+        }
+    
+        .generator-result {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            background-color: rgb(216, 213, 204);
+            border-radius: 1em;
+            padding: 0 2em 2em 3em;
+            margin-left: 2em;
+            width: 50em;
+    
+            li {
+                font-family: 'Courier New', Courier, monospace;
+                font-size: 2em;
+                color: rgb(141, 122, 107);
+            }
+        }
+    }
+}

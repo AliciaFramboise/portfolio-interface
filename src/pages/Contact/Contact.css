@@ -1,0 +1,15 @@
+.contact-container {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(158, 111, 86);
+
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+        row-gap: 1em;
+        background-color: rgb(204, 180, 167);
+        margin: 5em;
+        padding: 2em 6em 4em 6em;
+        border-radius: 1em;
+    }
+}
