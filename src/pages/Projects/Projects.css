@@ -7,18 +7,6 @@
         flex-direction: row;
         justify-content: space-between;
         flex-wrap: wrap;
-    
-    
-        .artwork-card {
-            display: flex;
-            flex-direction: column;
-            row-gap: 1em;
-            background-color: rgb(236, 219, 222);
-            border-radius: 1em;
-            width: 35em;
-            padding: 1em;
-            margin: 1em;
-        }
     }
 
     .add-work {

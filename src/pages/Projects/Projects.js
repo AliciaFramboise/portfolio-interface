@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import './Projects.css';
+import api from "../../api";
+import ArtworkCard from "../../components/ArtworkCard/ArtworkCard";
 
 export default function Projects() {
 
-  const [artworks, setArtworks] = useState([{}])
+  const artwork_url = `${api}artwork`;
+  const [artworks, setArtworks] = useState([])
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -15,8 +18,8 @@ export default function Projects() {
   /* *** GET ARTWORK *** */
   const fetchArtworks = async () => 
   {
-    const artworks = await axios.get(`http://127.0.0.1:8000/artwork`);
-    setArtworks(artworks.data)
+    const results = await axios.get(artwork_url);
+    setArtworks(results.data);
   }
 
   useEffect(() => {
@@ -28,7 +31,7 @@ export default function Projects() {
   {
     event.preventDefault();
 
-    await axios.post(`http://127.0.0.1:8000/artwork`, 
+    await axios.post(artwork_url, 
     formData,
           {
             headers: {
@@ -44,7 +47,7 @@ export default function Projects() {
 
   /* *** DELETE ARTWORK *** */
   const deleteArtwork = async (id) => {
-    await axios.delete(`http://127.0.0.1:8000/artwork/${id}`)
+    await axios.delete(`${artwork_url}/${id}`)
       .then(() => console.log("Successfully delete artwork"))
       .catch(error => console.error('Could not delete this artwork', error));
     fetchArtworks();
@@ -52,8 +55,8 @@ export default function Projects() {
 
   function refreshForm() {
     setFormData({
-      username: '',
-      password: '',
+      title: '',
+      description: '',
       file: null,
     });
   }
@@ -70,22 +73,13 @@ export default function Projects() {
     return (
       <div className="project-container">
         <h1> Your current work </h1>
-        <div className="artworks-container">
+        {artworks.length === 0 ? (<p>No artwork to display at the moment</p>) : (
+          <div className="artworks-container">
           {artworks.map(artwork => (
-              <div key={artwork.id} className="artwork-card">
-                <h2>
-                  {artwork.title}
-                </h2>
-                <p>
-                  {artwork.description}
-                </p>
-                <p>
-                  {artwork.file}
-                </p>
-                <button onClick={() => deleteArtwork(artwork.id)}> DELETE </button>
-            </div>
+             <ArtworkCard onDelete={() => deleteArtwork(artwork.id)}>{artwork}</ArtworkCard>
           ))}
         </div>
+        )}
 
         <div className="add-work">
           <form className="artwork-form" onSubmit={addArtwork}>

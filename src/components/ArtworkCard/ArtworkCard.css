@@ -1,0 +1,16 @@
+.artwork-card, .edit-artwork-card {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1em;
+    background-color: rgb(236, 219, 222);
+    border-radius: 1em;
+    width: 35em;
+    padding: 1em;
+    margin: 1em;
+
+    .card-foot {
+        display: flex;
+        flex-direction: row;
+        column-gap: 1em;
+    }
+}
