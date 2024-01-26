@@ -1,16 +1,24 @@
 import React, { useState } from 'react'
 import './ArtworkCard.css';
 
-export default function ArtworkCard({children, onDelete}) {
+export default function ArtworkCard({children, onDelete, onEdit}) {
     const [isEditing, setIsEditing] = useState(false);
-    const [editedTitle, setEditedTitle] = useState(children.title);
-    const [editedDescription, setEditedDescription] = useState(children.description);
 
-    function handleEditView() {
-      setIsEditing(true);
+    const [formData, setFormData] = useState({
+      title: children.title,
+      description: children.description,
+    });
+
+    function handleSave() {
+      setIsEditing(false);
+      onEdit(children.id, formData);
     }
 
     function handleCancel() {
+      setFormData({
+        title: children.title,
+        description: children.description,
+      });
       setIsEditing(false);
     }
 
@@ -18,10 +26,13 @@ export default function ArtworkCard({children, onDelete}) {
     <div>
         {isEditing ? (
           <div className="edit-artwork-card">
-            <textarea value={editedTitle} onChange={(event) => setEditedTitle(event.target.value)}/>
-            <textarea value={editedDescription} onChange={(event) => setEditedDescription(event.target.value)}/>
+            <label for="title">Title</label>
+            <input name="title" value={formData.title} onChange={(e) =>  setFormData({ ...formData, [e.target.name]: e.target.value })}/>
+
+            <label for="description">Description</label>
+            <textarea name="description" value={formData.description} onChange={(e) =>  setFormData({ ...formData, [e.target.name]: e.target.value })}/>
             <div className='card-foot'>
-              <button> SAVE </button>
+              <button onClick={handleSave}> SAVE </button>
               <button onClick={handleCancel}> CANCEL </button>
             </div>
         </div>
@@ -38,7 +49,7 @@ export default function ArtworkCard({children, onDelete}) {
               </p>
               <div className='card-foot'>
                   <button onClick={onDelete}> DELETE </button>
-                  <button onClick={handleEditView}> EDIT </button>
+                  <button onClick={() => setIsEditing(true)}> EDIT </button>
               </div> 
           </div>
         )}

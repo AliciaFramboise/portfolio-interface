@@ -41,6 +41,7 @@ export default function Projects() {
           .then(() => {  
             refreshForm();
             fetchArtworks();
+            console.info("Successfully create artwork")
           })
           .catch(error => console.error('Could not create this artwork', error));
   }
@@ -48,10 +49,27 @@ export default function Projects() {
   /* *** DELETE ARTWORK *** */
   const deleteArtwork = async (id) => {
     await axios.delete(`${artwork_url}/${id}`)
-      .then(() => console.log("Successfully delete artwork"))
+      .then(() => console.info("Successfully delete artwork"))
       .catch(error => console.error('Could not delete this artwork', error));
     fetchArtworks();
   }
+
+  
+    /* *** UPDATE ARTWORK *** */
+
+    const updateArtwork = async (id, formData) => {
+      await axios.put(`${artwork_url}/${id}`, formData, 
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        })
+        .then(() => {  
+          console.info("Successfully update artwork");
+          fetchArtworks();
+        })
+        .catch(error => console.error('Could not update this artwork', error));
+    }
 
   function refreshForm() {
     setFormData({
@@ -76,15 +94,16 @@ export default function Projects() {
         {artworks.length === 0 ? (<p>No artwork to display at the moment</p>) : (
           <div className="artworks-container">
           {artworks.map(artwork => (
-             <ArtworkCard onDelete={() => deleteArtwork(artwork.id)}>{artwork}</ArtworkCard>
+             <ArtworkCard onEdit={updateArtwork} onDelete={() => deleteArtwork(artwork.id)}>{artwork}</ArtworkCard>
           ))}
         </div>
         )}
 
         <div className="add-work">
+        <h1> Add a new work </h1>
           <form className="artwork-form" onSubmit={addArtwork}>
               <input type="text" name="title" value={formData.title} onChange={handleInputChange} placeholder="Title" />
-              <input type="text" name="description" value={formData.description} onChange={handleInputChange} placeholder="Description"/>
+              <textarea type="text" name="description" value={formData.description} onChange={handleInputChange} placeholder="Description"/>
               <input type="file" name="file" onChange={handleInputChange}/>
             <button type="submit">ADD</button>
           </form>

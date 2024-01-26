@@ -11,6 +11,7 @@
 
     .add-work {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         margin-top: 4em;
 
@@ -25,11 +26,15 @@
             padding: 2em;
             margin: 2em;
     
-            input {
+            input, textarea {
                 border-radius: 1em;
                 padding: 1em;
                 border: none;
                 width: 50em;
+            }
+
+            textarea {
+                height: 10em;
             }
         }
     }

@@ -8,6 +8,17 @@
     padding: 1em;
     margin: 1em;
 
+    input, textarea {
+        border-radius: 1em;
+        padding: 1em;
+        border: none;
+        width: 40em;
+    }
+
+    textarea {
+        height: 5em;
+    }
+
     .card-foot {
         display: flex;
         flex-direction: row;

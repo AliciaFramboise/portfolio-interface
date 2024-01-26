@@ -4,7 +4,7 @@ export default function Navbar() {
     return (
       <nav className="nav">
         <a href="/" className="site-title">
-          TriciaFramboise
+          BaleineALunettes
         </a>
         <ul>
             <CustomLink to="/about">ABOUT</CustomLink>
