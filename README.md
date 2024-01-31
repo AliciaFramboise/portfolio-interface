@@ -2,7 +2,7 @@
 
 This project is a submodules of [online_portfolio](https://github.com/AliciaFramboise/online-portfolio/tree/master)
 
-Allows you to manage artworks in a userfriendly environment
+Allows you to manage your artworks in a userfriendly environment
 
 ## Available Scripts
 
