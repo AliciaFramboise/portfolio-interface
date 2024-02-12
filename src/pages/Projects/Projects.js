@@ -30,12 +30,14 @@ export default function Projects() {
   const addArtwork = async (event) => 
   {
     event.preventDefault();
+    const token = localStorage.getItem('token');
 
     await axios.post(artwork_url, 
     formData,
           {
             headers: {
-                'Content-Type': 'multipart/form-data'
+                'Content-Type': 'multipart/form-data',
+                 Authorization: `Bearer ${token}`,
             }
           })
           .then(() => {  
@@ -48,7 +50,13 @@ export default function Projects() {
 
   /* *** DELETE ARTWORK *** */
   const deleteArtwork = async (id) => {
-    await axios.delete(`${artwork_url}/${id}`)
+    const token = localStorage.getItem('token');
+
+    await axios.delete(`${artwork_url}/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
       .then(() => console.info("Successfully delete artwork"))
       .catch(error => console.error('Could not delete this artwork', error));
     fetchArtworks();
@@ -58,10 +66,13 @@ export default function Projects() {
     /* *** UPDATE ARTWORK *** */
 
     const updateArtwork = async (id, formData) => {
+      const token = localStorage.getItem('token');
+
       await axios.put(`${artwork_url}/${id}`, formData, 
         {
           headers: {
-            'Content-Type': 'multipart/form-data'
+            'Content-Type': 'multipart/form-data',
+            Authorization: `Bearer ${token}`,
           }
         })
         .then(() => {  

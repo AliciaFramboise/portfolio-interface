@@ -26,7 +26,9 @@ export default function Login() {
       }
     })
     .then((response) => {
-      console.log(response.data); 
+      const accessToken = response.data.access_token;
+      console.log(accessToken);
+      localStorage.setItem('token', accessToken);
       console.info("Successfully authenticated");
       navigate('/portfolio');
     })
