@@ -1,0 +1,26 @@
+.login-page {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(158, 111, 86);
+    flex-direction: column;
+    padding: 2em;
+
+    .login-container {
+        background-color: rgb(204, 180, 167);
+        margin: 5em;
+        padding: 2em 6em 4em 6em;
+        border-radius: 1em;
+        width: 20em;
+        
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            row-gap: 1em;
+            padding-bottom: 2em;
+
+            p {
+                color: red;
+            }
+        }
+    }
+}

@@ -1,6 +1,15 @@
-import { Link, useMatch, useResolvedPath } from "react-router-dom"
+import { Link, useLocation, useMatch, useResolvedPath } from "react-router-dom"
 
 export default function Navbar() {
+
+  const location = useLocation();
+
+  const isLoginPage = location.pathname === '/';
+
+  if (isLoginPage) {
+    return null; 
+  }
+
     return (
       <nav className="nav">
         <a href="/" className="site-title">
